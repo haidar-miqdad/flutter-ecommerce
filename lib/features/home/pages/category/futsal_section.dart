@@ -28,7 +28,7 @@ class FutsalSection extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 return Row(
                   children: [
-                    Image.asset('assets/images/product1.png'),
+                    Image.asset('assets/images/product4.png'),
                     const SizedBox(width: 12,),
                     Expanded(
                       child: Column(

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hapus_ecommerce/preferences/preferences.dart';
-import '../category/category.dart';
+
+import '../../../features.dart';
 
 part 'sections/header_section.dart';
-part 'sections/category_section.dart';
 part 'sections/popular_product_section.dart';
 part 'sections/new_arrival_section.dart';
 
@@ -17,7 +17,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  Widget _categoryItem(int index, Widget section) {
+  Widget _categoryItem(int index,) {
     return Padding(
       padding: const EdgeInsets.only(right: 16.0),
       child: GestureDetector(
@@ -47,21 +47,20 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  List<Widget> sections = const [
+    AllShoes(),
+    RunningSection(),
+    BasketballSection(),
+    FootballSection(),
+    FutsalSection(),
+  ];
+
   List<String> category = [
     'All Shoes',
     'Running',
     'Basketball',
     'Football',
     'Futsal'
-  ];
-
-
-  List<Widget> sections = const [
-    AllShoes(),
-    RunningSection(),
-    BasketballSection(),
-    FootballSection(),
-    FutsalSection()
   ];
 
 
@@ -75,24 +74,23 @@ class _HomePageState extends State<HomePage> {
         const SizedBox(height: 30,),
         Padding(
           padding: const EdgeInsets.only(left: 30.0),
-          child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                _categoryItem(0, AllShoes()),
-                _categoryItem(1, BasketballSection()),
-                _categoryItem(2, FootballSection()),
-                _categoryItem(3, FutsalSection()),
-              ],
+          child: SizedBox(
+            height: 40,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              shrinkWrap: true,
+              itemBuilder: (BuildContext context, int index) {
+                return _categoryItem(index);
+              },
+              itemCount: category.length,
             ),
           ),
+
         ),
         const SizedBox(height: 30,),
         sections[selectedIndex],
       ],
     );
   }
-
-
 }
 
