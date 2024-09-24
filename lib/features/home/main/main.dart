@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hapus_ecommerce/preferences/preferences.dart';
 import 'package:hapus_ecommerce/features/features.dart';
 
+import '../../cart/pages/index/page.dart';
+
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
@@ -45,7 +47,9 @@ class _MainPageState extends State<MainPage> {
         height: 60,
         width: 60,
         child: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const CartPage()));
+          },
           shape: const CircleBorder(),
           backgroundColor: const Color(0xff38ABBE),
           child: Image.asset('assets/images/cart.png'),
